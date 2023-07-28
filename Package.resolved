@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Amplitude-Swift",
+        "repositoryURL": "https://github.com/amplitude/Amplitude-Swift",
+        "state": {
+          "branch": null,
+          "revision": "07b14d5ee0d1c3fadabd9fea08705a3220f39f84",
+          "version": "0.4.7"
+        }
+      },
+      {
+        "package": "AppLovinSDK",
+        "repositoryURL": "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git",
+        "state": {
+          "branch": null,
+          "revision": "ca9a0d31a5ac9faf7abc9627c0994672d2cddabd",
+          "version": "11.11.1"
+        }
+      },
+      {
+        "package": "KovaleeSDK",
+        "repositoryURL": "https://github.com/cotyapps/Kovalee-iOS-SDK",
+        "state": {
+          "branch": "sdk-spm-split",
+          "revision": "50b41f85e700dfb9a9e32b0f3b1a63a38cd085a8",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

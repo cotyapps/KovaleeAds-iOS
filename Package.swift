@@ -1,28 +1,74 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "KovaleeAds",
+	defaultLocalization: "en",
+	platforms: [
+		.iOS(.v14)
+	],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "KovaleeAds",
-            targets: ["KovaleeAds"]),
+		.library(
+			name: "KovaleeAds",
+			targets: [
+				"KovaleeAds"
+			]
+		)
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+		.package(url: "https://github.com/cotyapps/Kovalee-iOS-SDK", branch: "sdk-spm-split"),
+		.package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", from: Version(11, 10, 1))
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "KovaleeAds",
-            dependencies: []),
-        .testTarget(
-            name: "KovaleeAdsTests",
-            dependencies: ["KovaleeAds"]),
+		.target(
+			name: "KovaleeAds",
+			dependencies: [
+				.product(name: "KovaleeSDK", package: "Kovalee-iOS-SDK"),
+				.product(name: "AppLovinSDK", package: "AppLovin-MAX-Swift-Package"),
+				"AdColony",
+				"AppLovinMediationAdColonyAdapter",
+				"AppLovinMediationFacebookAdapter",
+				"AppLovinMediationIronSourceAdapter",
+				"AppLovinMediationUnityAdsAdapter",
+				"FBAudienceNetwork",
+				"IronSource",
+				"UnityAds"
+			]
+		),
+
+		.binaryTarget(
+			name: "AdColony",
+			path: "./Frameworks/AdColony.xcframework"
+		),
+		.binaryTarget(
+			name: "AppLovinMediationAdColonyAdapter",
+			path: "./Frameworks/AppLovinMediationAdColonyAdapter.xcframework"
+		),
+		.binaryTarget(
+			name: "AppLovinMediationFacebookAdapter",
+			path: "./Frameworks/AppLovinMediationFacebookAdapter.xcframework"
+		),
+		.binaryTarget(
+			name: "AppLovinMediationIronSourceAdapter",
+			path: "./Frameworks/AppLovinMediationIronSourceAdapter.xcframework"
+		),
+		.binaryTarget(
+			name: "AppLovinMediationUnityAdsAdapter",
+			path: "./Frameworks/AppLovinMediationUnityAdsAdapter.xcframework"
+		),
+		.binaryTarget(
+			name: "FBAudienceNetwork",
+			path: "./Frameworks/FBAudienceNetwork.xcframework"
+		),
+		.binaryTarget(
+			name: "IronSource",
+			path: "./Frameworks/IronSource.xcframework"
+		),
+		.binaryTarget(
+			name: "UnityAds",
+			path: "./Frameworks/UnityAds.xcframework"
+		)
     ]
 )
