@@ -23,9 +23,9 @@
         "package": "KovaleeSDK",
         "repositoryURL": "https://github.com/cotyapps/Kovalee-iOS-SDK",
         "state": {
-          "branch": "sdk-spm-split",
-          "revision": "50b41f85e700dfb9a9e32b0f3b1a63a38cd085a8",
-          "version": null
+          "branch": null,
+          "revision": "c4fe6101a1d9fd16acd8da92561fb5aa4a9ac8a7",
+          "version": "1.2.0"
         }
       }
     ]
