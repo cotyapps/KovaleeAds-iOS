@@ -127,10 +127,12 @@ extension ApplovinWrapperImpl: MAAdDelegate, MARewardedAdDelegate {
 		if ad.adUnitIdentifier == interstitialUnitId {
 			KLogger.debug("📺 Interstitial Ad ready to be shown")
 			interstitialAdReady?.resume(returning: true)
+			interstitialAdReady = nil
 		}
 		if ad.adUnitIdentifier == rewardedUnitId {
 			KLogger.debug("📺 Rewarded Ad ready to be shown")
 			rewardedAdReady?.resume(returning: true)
+			rewardedAdReady = nil
 		}
     }
 
