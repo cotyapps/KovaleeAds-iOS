@@ -1,12 +1,13 @@
 import AppLovinSDK
 import FBAudienceNetwork
 import KovaleeFramework
+import KovaleeSDK
 
 enum ApplovinError: Error {
 	case notInitializedCorrectly
 }
 
-class ApplovinWrapperImpl: NSObject, AdsManager {
+class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
     init(withKey key: KovaleeKeys.Applovin) {
 		KLogger.debug("📺 initializing Applovin")
 
