@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "KovaleeAds"
-  spec.version      = "1.0.2"
+  spec.version      = "1.1.0"
   spec.summary      = "KovaleeAds simplifies displaying ads in app."
   spec.description  = <<-DESC
   If you're not on the subscription train, you can still monetize your app with ads. KovaleeAds provides an intuitive interface for adding both interstitial and rewarded ads within your app. 
