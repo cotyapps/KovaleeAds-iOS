@@ -184,6 +184,13 @@ public struct FBAdProcessingOptions: AbstractFBAdProcessingOptions {
     public var isStateCalifornia: Bool
 
     public var advertiserTrackingEnabled: Bool
+	
+	public init(enableLDU: Bool, isCountryUS: Bool, isStateCalifornia: Bool, advertiserTrackingEnabled: Bool) {
+		self.enableLDU = enableLDU
+		self.isCountryUS = isCountryUS
+		self.isStateCalifornia = isStateCalifornia
+		self.advertiserTrackingEnabled = advertiserTrackingEnabled
+	}
 }
 
 extension LogLevel {
