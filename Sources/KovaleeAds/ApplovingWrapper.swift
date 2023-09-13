@@ -19,8 +19,7 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 		self.interstitialUnitId = key.interstitialUnitId
 		self.rewardedUnitId = key.rewardedUnitId
 
-        // TODO: check this user Id
-//        ALSdk.shared()!.userIdentifier = "USER_ID"
+		self.setupfbAdProcessingOptions()
     }
 	
 	private func checkSDKInitialization() async throws {
@@ -50,20 +49,12 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 		KLogger.debug("📺 Applovin initialized correctly")
 	}
 
-	func setupfbAdProcessingOptions(options: AbstractFBAdProcessingOptions) async {
+	func setupfbAdProcessingOptions() {
         if configuration?.appTrackingTransparencyStatus == .authorized {
-            FBAdSettings.setAdvertiserTrackingEnabled(options.advertiserTrackingEnabled)
+            FBAdSettings.setAdvertiserTrackingEnabled(true)
         }
 
-        if options.enableLDU {
-            FBAdSettings.setDataProcessingOptions(
-                ["LDU"],
-                country: options.isCountryUS ? 1 : 0,
-                state: options.isStateCalifornia ? 1000 : 0
-            )
-        } else {
-            FBAdSettings.setDataProcessingOptions([])
-        }
+		FBAdSettings.setDataProcessingOptions(["LDU"], country: 0, state: 0)
     }
 
 	func createInterstitialAd() async throws -> Bool {
@@ -176,22 +167,6 @@ extension ApplovinWrapperImpl: MAAdDelegate, MARewardedAdDelegate {
     }
 }
 // swiftlint:enable identifier_name
-
-/// Options for setting up FB ad Processing'
-public struct FBAdProcessingOptions: AbstractFBAdProcessingOptions {
-    public var enableLDU: Bool
-    public var isCountryUS: Bool
-    public var isStateCalifornia: Bool
-
-    public var advertiserTrackingEnabled: Bool
-	
-	public init(enableLDU: Bool, isCountryUS: Bool, isStateCalifornia: Bool, advertiserTrackingEnabled: Bool) {
-		self.enableLDU = enableLDU
-		self.isCountryUS = isCountryUS
-		self.isStateCalifornia = isStateCalifornia
-		self.advertiserTrackingEnabled = advertiserTrackingEnabled
-	}
-}
 
 extension LogLevel {
     func applovinLogLevel() -> Bool {
