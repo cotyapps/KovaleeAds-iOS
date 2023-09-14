@@ -18,8 +18,6 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 
 		self.interstitialUnitId = key.interstitialUnitId
 		self.rewardedUnitId = key.rewardedUnitId
-
-		self.setupfbAdProcessingOptions()
     }
 	
 	private func checkSDKInitialization() async throws {
@@ -30,6 +28,7 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 
 		if !sdk.isInitialized {
 			self.configuration = await sdk.initializeSdk()
+			self.setupfbAdProcessingOptions()
 		}
 
 		if self.interstitialAd == nil {

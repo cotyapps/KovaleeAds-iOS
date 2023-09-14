@@ -18,7 +18,8 @@ let package = Package(
 		)
     ],
     dependencies: [
-		.package(url: "https://github.com/cotyapps/Kovalee-iOS-SDK", from: Version(1, 3, 0)),
+//		.package(url: "https://github.com/cotyapps/Kovalee-iOS-SDK", from: Version(1, 3, 0)),
+		.package(url: "https://github.com/cotyapps/Kovalee-iOS-SDK", branch: "master"),
 		.package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", from: Version(11, 10, 1))
     ],
     targets: [
