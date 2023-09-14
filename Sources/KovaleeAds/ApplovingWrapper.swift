@@ -179,9 +179,9 @@ extension LogLevel {
     }
 }
 
-struct Reward: AbstractReward {
-	var label: String
-	var amount: Int
+public struct Reward: AbstractReward {
+	public var label: String
+	public var amount: Int
 }
 
 extension Reward {
