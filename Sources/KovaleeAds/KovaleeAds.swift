@@ -17,11 +17,6 @@ extension AdsManagerCreator: Creator {
 
 // MARK: Applovin
 extension Kovalee {
-	/// Configure FB ad ``FBAdProcessingOptions``
-	public static func setupfbAdProcessingOptions(options: FBAdProcessingOptions) async {
-		await Self.shared.kovaleeManager?.setupfbAdProcessingOptions(options: options)
-	}
-	
 	/// Displays the Mediation Debugger screen to check if the mediated networks aare configured correctly
 	public static func showMediationDebugger() {
 		Self.shared.kovaleeManager?.showMediationDebugger()
