@@ -83,9 +83,9 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 		}
 	}
 
-	func showRewardedAd() async throws -> Bool {
+	func showRewardedAd() async throws -> AbstractReward? {
 		try await withCheckedThrowingContinuation { continuation in
-			adClosed = continuation
+			rewardedAdClosed = continuation
 			rewardedAd?.show()
 		}
 	}
@@ -107,6 +107,7 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 	private var interstitialAdReady: CheckedContinuation<Bool, Error>?
 	private var rewardedAdReady: CheckedContinuation<Bool, Error>?
 	private var adClosed: CheckedContinuation<Bool, Error>?
+	private var rewardedAdClosed: CheckedContinuation<AbstractReward, Error>?
 }
 
 // swiftlint:disable identifier_name
@@ -160,9 +161,9 @@ extension ApplovinWrapperImpl: MAAdDelegate, MARewardedAdDelegate {
     }
 
     func didRewardUser(for ad: AppLovinSDK.MAAd, with reward: MAReward) {
-		KLogger.debug("📺 Rewarded ad has been seen")
-		adClosed?.resume(returning: true)
-		adClosed = nil
+		rewardedAdClosed?.resume(returning: Reward.map(from: reward))
+		KLogger.debug("📺 Rewarded ad has been seen. Reward: \(reward.label) \(reward.amount)")
+		rewardedAdClosed = nil
     }
 }
 // swiftlint:enable identifier_name
@@ -176,4 +177,18 @@ extension LogLevel {
             return false
         }
     }
+}
+
+public struct Reward: AbstractReward {
+	public var label: String
+	public var amount: Int
+}
+
+extension Reward {
+	static func map(from aReward: MAReward) -> Self {
+		Reward(
+			label: aReward.label,
+			amount: aReward.amount
+		)
+	}
 }

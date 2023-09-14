@@ -46,7 +46,7 @@ extension Kovalee {
 	/// Displays a rewarded ad if ready
 	///
 	/// It returns once the user has seen the whole ad
-	public static func displayRewardedAd() async -> Bool? {
-		await Self.shared.kovaleeManager?.showRewardedAd()
+	public static func displayRewardedAd() async -> Reward? {
+		await Self.shared.kovaleeManager?.showRewardedAd() as? Reward
 	}
 }
