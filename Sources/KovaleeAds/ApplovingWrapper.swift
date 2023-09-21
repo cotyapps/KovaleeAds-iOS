@@ -20,6 +20,10 @@ class ApplovinWrapperImpl: NSObject, AdsManager, Manager {
 		self.rewardedUnitId = key.rewardedUnitId
     }
 	
+	func setDataCollectionEnabled(_ enabled: Bool) {
+		ALPrivacySettings.setHasUserConsent(enabled)
+	}
+	
 	private func checkSDKInitialization() async throws {
 		guard let sdk = self.sdk else {
 			KLogger.error("📺 Couldn't initialize Applovin")
